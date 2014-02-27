@@ -1,0 +1,11 @@
+deploy_metadata:
+  application_name: application
+
+deploy_metadata_defaults:
+  release_dir_name: releases
+  logs_dir_name: shared/logs
+  temp_dir_name: shared/tmp
+  assets_dir_name: shared/assets
+  bundle_dir_name: shared/bundle
+  release_home: /opt
+

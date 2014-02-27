@@ -1,0 +1,34 @@
+---
+- name: gather daployment facts
+  action: deployment_facts
+
+- name: set derivative facts
+  set_fact: >
+    deploy_application_name='{{ deploy_metadata.application_name }}'
+    deploy_application_home='{{ deploy_metadata_defaults.release_home }}/{{ deploy_metadata.application_name }}'
+    deploy_release_id='{{ deployment.timestamp }}'
+    deploy_build_path='{{ deployment.build_path }}'
+    deploy_release_dir='{{ deploy_metadata_defaults.release_home }}/{{ deploy_metadata.application_name }}/{{ deploy_metadata_defaults.release_dir_name }}/{{ deployment.timestamp }}'
+    deploy_logs_dir='{{ deploy_metadata_defaults.release_home }}/{{ deploy_metadata.application_name }}/{{ deploy_metadata_defaults.logs_dir_name }}'
+    deploy_assets_dir='{{ deploy_metadata_defaults.release_home }}/{{ deploy_metadata.application_name }}/{{ deploy_metadata_defaults.assets_dir_name }}'
+    deploy_bundle_dir='{{ deploy_metadata_defaults.release_home }}/{{ deploy_metadata.application_name }}/{{ deploy_metadata_defaults.bundle_dir_name }}'
+
+# - name: variables
+#   debug: var='{{item}}'
+#   with_items:
+#     - deploy_application_home
+#     - deploy_application_name
+#     - deploy_release_id
+#     - deploy_build_path
+#     - deploy_release_dir
+#     - deploy_logs_dir
+#     - deploy_assets_dir
+#     - deploy_bundle_dir
+
+- name: create application home
+  sudo: true
+  file: >
+    path='{{ deploy_application_home }}'
+    state=directory
+    owner={{ ansible_ssh_user }}
+    group={{ ansible_ssh_user }}
