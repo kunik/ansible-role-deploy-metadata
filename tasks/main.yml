@@ -12,6 +12,7 @@
     deploy_logs_dir='{{ deploy_metadata_defaults.release_home }}/{{ deploy_metadata.application_name }}/{{ deploy_metadata_defaults.logs_dir_name }}'
     deploy_assets_dir='{{ deploy_metadata_defaults.release_home }}/{{ deploy_metadata.application_name }}/{{ deploy_metadata_defaults.assets_dir_name }}'
     deploy_bundle_dir='{{ deploy_metadata_defaults.release_home }}/{{ deploy_metadata.application_name }}/{{ deploy_metadata_defaults.bundle_dir_name }}'
+    deploy_pids_dir='{{ deploy_metadata_defaults.release_home }}/{{ deploy_metadata.application_name }}/{{ deploy_metadata_defaults.pids_dir_name }}'
 
 # - name: variables
 #   debug: var='{{item}}'
@@ -24,6 +25,7 @@
 #     - deploy_logs_dir
 #     - deploy_assets_dir
 #     - deploy_bundle_dir
+#     - deploy_pids_dir
 
 - name: create application home
   sudo: true
