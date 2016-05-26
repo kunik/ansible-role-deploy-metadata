@@ -28,7 +28,7 @@
 #     - deploy_pids_dir
 
 - name: create application home
-  sudo: true
+  become: yes
   file: >
     path='{{ deploy_application_home }}'
     state=directory
